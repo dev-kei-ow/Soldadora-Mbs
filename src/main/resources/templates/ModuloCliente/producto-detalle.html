@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorate=~{layout-cliente}>
+<head>
+<title>DETALLE-PRODUCTO</title>
+
+</head>
+<body>
+
+	<div th:include="layout-cliente :: header"></div>
+
+
+	<main>
+
+
+		<div layout:fragment="main-layout">
+
+			<div class="pagetitle">
+				<h3>Tienda</h3>
+				<nav>
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="index.html">Detalle</a></li>
+						<li class="breadcrumb-item active">Productos</li>
+					</ol>
+				</nav>
+
+			</div>
+			<hr>
+
+			<!-- Section-->
+			<section>
+				<div class="card">
+					<div class="container-fliud">
+						<div class="wrapper row">
+							<div class="preview col-md-6">
+
+								<div class="preview-pic tab-content">
+									<div class="tab-pane active" id="pic-1">
+										<img th:src="@{/images/{img} (img=${detproducto.imagen})}" />
+									</div>
+
+
+									<div class="tab-pane" id="pic-2">
+										<img src="http://placekitten.com/400/252" />
+									</div>
+									<div class="tab-pane" id="pic-3">
+										<img src="http://placekitten.com/400/252" />
+									</div>
+									<div class="tab-pane" id="pic-4">
+										<img src="http://placekitten.com/400/252" />
+									</div>
+									<div class="tab-pane" id="pic-5">
+										<img src="http://placekitten.com/400/252" />
+									</div>
+								</div>
+								<ul class="preview-thumbnail nav nav-tabs">
+									<li class="active"><a data-target="#pic-1"
+										data-toggle="tab"><img
+											src="http://placekitten.com/200/126" /></a></li>
+									<li><a data-target="#pic-2" data-toggle="tab"><img
+											src="http://placekitten.com/200/126" /></a></li>
+									<li><a data-target="#pic-3" data-toggle="tab"><img
+											src="http://placekitten.com/200/126" /></a></li>
+									<li><a data-target="#pic-4" data-toggle="tab"><img
+											src="http://placekitten.com/200/126" /></a></li>
+									<li><a data-target="#pic-5" data-toggle="tab"><img
+											src="http://placekitten.com/200/126" /></a></li>
+								</ul>
+
+							</div>
+
+
+
+							<div class="details col-md-6">
+
+								<form th:action="@{/addToCart}" method="POST">
+									<input type="hidden" th:value="${detproducto.idProducto}"
+										name="id">
+
+									<h3 class="product-title" th:text="${detproducto.nombre}"></h3>
+									<div class="rating">
+										<div class="stars">
+											<span class="fa fa-star checked"></span> <span
+												class="fa fa-star checked"></span> <span
+												class="fa fa-star checked"></span> <span class="fa fa-star"></span>
+											<span class="fa fa-star"></span>
+										</div>
+										<span class="review-no">41 reviews</span>
+									</div>
+									<p class="product-description"
+										th:text="${detproducto.descripcion}"></p>
+									<h4 class="price">
+										precio: <span th:text=" '$' + ${detproducto.precio}"></span>
+									</h4>
+									<h4 class="price">
+										Cantidad: <input type="number" id="cantidad" name="cantidad"
+											autocomplete="off" min="1" max="5" value="1">
+									</h4>
+
+									<h5 class="sizes">
+										sizes: <span class="size" data-toggle="tooltip" title="small">s</span>
+										<span class="size" data-toggle="tooltip" title="medium">m</span>
+										<span class="size" data-toggle="tooltip" title="large">l</span>
+										<span class="size" data-toggle="tooltip" title="xtra large">xl</span>
+									</h5>
+									<h5 class="colors">
+										colors: <span class="color orange not-available"
+											data-toggle="tooltip" title="Not In store"></span> <span
+											class="color green"></span> <span class="color blue"></span>
+									</h5>
+									<div class="action">
+
+										<!--th:href="@{/addToCart/{id}(id = ${detproducto.idProducto})}"-->
+
+										<button class="add-to-cart btn btn-default" type="submit">
+											add to cart</button>
+										<!--  <button class="like btn btn-default" type="button">
+										<span class="fa fa-heart"></span>
+									</button>-->
+									</div>
+								</form>
+
+
+							</div>
+
+
+
+						</div>
+					</div>
+				</div>
+
+			</section>
+
+		</div>
+
+
+	</main>
+
+
+	<!-- Footer -->
+	<div th:include="layout-cliente :: footer"></div>
+	<a href="#"
+		class="back-to-top d-flex align-items-center justify-content-center"><i
+		class="bi bi-arrow-up-short"></i></a>
+
+
+</body>
+</html>

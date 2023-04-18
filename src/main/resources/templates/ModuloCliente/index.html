@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorate=~{layout-cliente}>
+
+<head>
+<title>INDEX-CLIENTE</title>
+
+</head>
+
+<body>
+
+
+	<header th:insert="layout-cliente :: header"></header>
+
+
+	<!-- ======= main ======= -->
+	<main>
+
+
+		<div layout:fragment="main-layout">
+
+			<div class="pagetitle">
+				<h3>Tienda</h3>
+				<nav>
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="index.html">home</a></li>
+						<li class="breadcrumb-item active">Productos</li>
+					</ol>
+				</nav>
+
+			</div>
+			<hr>
+
+			<!-- Section-->
+			<section>
+				<div class="container px-4 px-lg-5 mt-3">
+					<div
+						class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+
+
+
+						<div class="col mb-5" th:each="productos : ${lstProductos}">
+							<div class="card h-100">
+								<!-- Product image-->
+								<img class="card-img-top"
+									th:src="@{/images/{img} (img=${productos.imagen})} "
+									height="150" width="100" alt="..." />
+								<!-- Product details-->
+								<div class="card-body p-4">
+									<div class="text-center">
+										<!-- Product name-->
+										<h5 class="fw-bolder" th:text="${productos.nombre}">Popular
+											Item</h5>
+										<!-- Product reviews-->
+										<div
+											class="d-flex justify-content-center small text-warning mb-2">
+											<div class="bi-star-fill"></div>
+											<div class="bi-star-fill"></div>
+											<div class="bi-star-fill"></div>
+											<div class="bi-star-fill"></div>
+											<div class="bi-star-fill"></div>
+										</div>
+										<!-- Product price-->
+										<span th:text="${'$' + productos.precio}"></span>
+									</div>
+								</div>
+								<!-- Product actions-->
+								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+									<div class="text-center">
+										<a class="btn btn-outline-dark mt-auto"
+											th:href="@{/productodetalle/{id} (id = ${productos.idProducto})}">
+											<i class="fa-solid fa-eye"></i> Ver detalle
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		</div>
+
+
+	</main>
+
+	<!-- Footer -->
+	<div th:insert="layout-cliente :: footer"></div>
+
+	<a href="#"
+		class="back-to-top d-flex align-items-center justify-content-center"><i
+		class="bi bi-arrow-up-short"></i></a>
+
+
+
+
+</body>
+</html>

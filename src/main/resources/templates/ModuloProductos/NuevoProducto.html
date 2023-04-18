@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+
+
+<!-- Google Fonts -->
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Righteous&display=swap">
+
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+	rel="stylesheet">
+
+<link th:href="@{/css/mdb.min.css}" rel="stylesheet">
+
+<link th:href="@{/css/custom.style.css}" rel="stylesheet">
+
+
+<!-- CSS Template  -->
+<link rel="stylesheet" href="css/Style_Mantenimientos">
+
+
+<title>Nueva Producto</title>
+</head>
+<body>
+
+
+	<div th:include="ModuloAdmin/TemplateAdmin.html::header"></div>
+
+
+	<!-- Page Content -->
+	<div class="container mt-4 mb-4">
+
+		<div class="card card-primary p-2">
+
+			<!--card-header start -->
+			<div class="card-header">
+				<h1 class="card-title" th:if="${producto.idProducto == null}">Nuevo
+					Producto</h1>
+				<h1 class="card-title" th:unless="${producto.idProducto == null}">Editar
+					Producto</h1>
+
+			</div>
+			<hr>
+
+			<!-- /.card-header -->
+
+			<!-- form start -->
+			<div class="container">
+
+				<form th:action="@{/productos/save}" th:object="${producto}"
+					method="post" enctype="multipart/form-data">
+
+					<input type="hidden" th:field="*{idProducto}"
+						th:value="${producto.idProducto}">
+
+					<div class="card-body">
+
+						<div class="row">
+
+							<div class="col">
+
+								<label for="exampleInputEmail1">Nombre:</label> <input
+									type="text" th:field="*{nombre}" class="form-control"
+									id="nombre" name="nombre" placeholder="Nombre Producto"
+									required>
+
+
+							</div>
+
+							<div class="col">
+
+								<label for="exampleInputEmail1">Precio:</label> <input
+									type="text" th:field="*{precio}" class="form-control"
+									id="nombre" name="nombre" placeholder="$/." required>
+
+
+							</div>
+
+							<div class="col">
+
+								<label for="exampleInputEmail1">Cantidad:</label> <input
+									type="text" th:field="*{cantidad}" class="form-control"
+									id="nombre" name="nombre" placeholder="#" required>
+
+
+							</div>
+
+
+						</div>
+
+						<div class="row">
+
+							<div class="col">
+
+
+								<!-- textarea -->
+								<div class="form-group">
+									<label>Descripcion:</label>
+									<textarea class="form-control" th:field="*{descripcion}"
+										rows="3" id="descripcion" name="descripcion"
+										placeholder="Ingrese la descripcion del producto" required>
+						
+						            </textarea>
+								</div>
+
+
+							</div>
+
+						</div>
+
+
+
+
+						<div class="row">
+							<div class="col">
+
+
+								<label class="control-label" for="img">Imagen:</label>
+								<div class="col-sm-10">
+									<input type="file" class="form-control-file" id="img"
+										name="img">
+								</div>
+
+
+							</div>
+
+
+						</div>
+					</div>
+					<!-- /.card-body -->
+
+					<div class="card-footer">
+
+						<div class="row">
+							<div class="col-sm-2">
+								<button type="submit" class="btn btn-success">
+									<i class="fa-solid fa-floppy-disk fa-2x text-gray-300"></i>&nbsp;Guardar
+								</button>
+							</div>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+
+	</div>
+	<!-- /.container -->
+
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script th:src="@{/js/mdb.min.js}"></script>
+
+</body>
+</html>

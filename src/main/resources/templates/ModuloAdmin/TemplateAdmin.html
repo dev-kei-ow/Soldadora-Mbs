@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+
+<title>HOME CLIENTE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+	rel="stylesheet">
+
+
+
+<link th:href="@{/css/mdb.min.css}" rel="stylesheet">
+
+
+</head>
+<body>
+
+
+	<div th:fragment="header">
+
+		<header>
+			<!-- Navbar -->
+			<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+				<!-- Container wrapper -->
+				<div class="container-fluid">
+					<!-- Toggle button -->
+					<button class="navbar-toggler" type="button"
+						data-mdb-toggle="collapse"
+						data-mdb-target="#navbarSupportedContent"
+						aria-controls="navbarSupportedContent" aria-expanded="false"
+						aria-label="Toggle navigation">
+						<i class="fas fa-bars"></i>
+					</button>
+
+					<!-- Collapsible wrapper -->
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<!-- Navbar brand -->
+						<a class="navbar-brand mt-2 mt-lg-0" th:href="@{/}"> MBS </a>
+						<!-- Left links -->
+						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+							<li class="nav-item"><a class="nav-link" href="#">MAQUINAS</a></li>
+							<li class="nav-item"><a class="nav-link"
+								th:href="@{/admin/gestiones}">GESTIONES</a></li>
+						</ul>
+						<!-- Left links -->
+					</div>
+					<!-- Collapsible wrapper -->
+
+					<!-- Right elements -->
+					<div class="d-flex align-items-center">
+
+						<button type="button" class="btn btn-primary me-3">
+							<span th:text="${session.tipousuario}"></span>
+						</button>
+						<!-- Avatar -->
+						<div class="dropdown">
+							<a class="dropdown-toggle d-flex align-items-center hidden-arrow"
+								href="#" id="navbarDropdownMenuAvatar" role="button"
+								data-mdb-toggle="dropdown" aria-expanded="false"> <img
+								src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+								class="rounded-circle" height="25"
+								alt="Black and White Portrait of a Man" loading="lazy" />
+							</a>
+							<ul class="dropdown-menu dropdown-menu-end"
+								aria-labelledby="navbarDropdownMenuAvatar">
+
+								<!--  <li><h5 class="dropdown-item"
+										th:text="${session.nombreusuario + ':'}"></h5></li>-->
+								<li><a class="dropdown-item" th:href="@{/usuario/login}">INICIAR
+										SESION</a></li>
+								<li><a class="dropdown-item" th:href="@{/usuario/logout}">CERRAR
+										SESION</a></li>
+							</ul>
+						</div>
+					</div>
+					<!-- Right elements -->
+				</div>
+				<!-- Container wrapper -->
+			</nav>
+			<!-- Navbar -->
+		</header>
+	</div>
+
+
+	<div th:fragment="footer">
+
+		<footer class="bg-dark text-center text-white">
+			<!-- Grid container -->
+			<div class="container p-4 pb-0">
+				<!-- Section: Social media -->
+				<section class="mb-4">
+					<!-- Facebook -->
+					<a class="btn btn-outline-light btn-floating m-1" href="#!"
+						role="button"><i class="fab fa-facebook-f"></i></a>
+
+					<!-- Twitter -->
+					<a class="btn btn-outline-light btn-floating m-1" href="#!"
+						role="button"><i class="fab fa-twitter"></i></a>
+
+					<!-- Google -->
+					<a class="btn btn-outline-light btn-floating m-1" href="#!"
+						role="button"><i class="fab fa-google"></i></a>
+
+					<!-- Instagram -->
+					<a class="btn btn-outline-light btn-floating m-1" href="#!"
+						role="button"><i class="fab fa-instagram"></i></a>
+
+					<!-- Linkedin -->
+					<a class="btn btn-outline-light btn-floating m-1" href="#!"
+						role="button"><i class="fab fa-linkedin-in"></i></a>
+
+					<!-- Github -->
+					<a class="btn btn-outline-light btn-floating m-1" href="#!"
+						role="button"><i class="fab fa-github"></i></a>
+				</section>
+				<!-- Section: Social media -->
+			</div>
+			<!-- Grid container -->
+
+			<!-- Copyright -->
+			<div class="text-center p-3"
+				style="background-color: rgba(0, 0, 0, 0.2);">
+				C* 2022 Copyright: <a class="text-white" href="#">MBSoldadoras.com</a>
+			</div>
+			<!-- Copyright -->
+		</footer>
+
+
+	</div>
+
+	<script th:src="@{/js/mdb.min.js}"></script>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+</body>
+</html>
