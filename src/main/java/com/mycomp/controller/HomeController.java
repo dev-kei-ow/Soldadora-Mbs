@@ -80,7 +80,7 @@ public class HomeController {
 		cart.setPrecioTotal(producto.getPrecio() * cantidad);
 		cart.setIdProducto(producto);
 
-		/* VALIDAR QUE EL PRODUCTO NO SE AÑADA DOS VECES */
+		/*::VALIDAR QUE EL PRODUCTO NO SE AÑADA DOS VECES::*/
 		Integer idProd = producto.getIdProducto(); // AQUI VIENE EL ID 1
 
 		/*
@@ -104,7 +104,7 @@ public class HomeController {
 		model.addAttribute("CartCount", GlobalData.detOrden.size());
 
 		// return "ModuloCliente/Home";
-		return "redirect:/homeproducto";
+		return "redirect:/indexProducto";
 
 	}
 
@@ -115,7 +115,7 @@ public class HomeController {
 		model.addAttribute("orden", orden);
 		model.addAttribute("CartCount", GlobalData.detOrden.size());
 
-		return "ModuloCliente/Carrito";
+		return "ModuloCliente/carrito";
 
 	}
 
@@ -162,7 +162,7 @@ public class HomeController {
 		model.addAttribute("orden", orden);
 		model.addAttribute("usuario", usuario);
 
-		return "ModuloCliente/OrdenCompra";
+		return "ModuloCliente/orden-compra";
 
 	}
 
