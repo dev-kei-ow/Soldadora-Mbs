@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorate="layout-admin">
+<head>
+<title>GESTION-PRODUCTOS</title>
+
+</head>
+<body>
+	<div layout:fragment="title">
+
+		<h1>PRODUCTOS</h1>
+		<nav>
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+				<li class="breadcrumb-item active">Agregar Productos</li>
+			</ol>
+		</nav>
+
+	</div>
+	<!-- End Page Title -->
+	<div layout:fragment="content-row">
+		<!-- Page Content -->
+		<div class="container mt-4 mb-4">
+
+			<div class="card card-primary p-2">
+
+				<!--card-header start -->
+				<div class="card-header">
+					<h1 class="card-title" th:if="${producto.idProducto == null}">Nuevo
+						Producto</h1>
+					<h1 class="card-title" th:unless="${producto.idProducto == null}">Editar
+						Producto</h1>
+
+				</div>
+			
+
+				<!-- /.card-header -->
+
+				<!-- form start -->
+				<div class="container mt-4">
+
+					<form th:action="@{/productos/save}" th:object="${producto}"
+						method="post" enctype="multipart/form-data">
+
+						<input type="hidden" th:field="*{idProducto}"
+							th:value="${producto.idProducto}">
+
+						<div class="card-body">
+
+							<div class="row">
+
+								<div class="col">
+
+									<label for="exampleInputEmail1">Nombre:</label> <input
+										type="text" th:field="*{nombre}" class="form-control"
+										id="nombre" name="nombre" placeholder="Nombre Producto"
+										required>
+
+
+								</div>
+
+								<div class="col">
+
+									<label for="exampleInputEmail1">Precio:</label> <input
+										type="text" th:field="*{precio}" class="form-control"
+										id="nombre" name="nombre" placeholder="$/." required>
+
+
+								</div>
+
+								<div class="col">
+
+									<label for="exampleInputEmail1">Cantidad:</label> <input
+										type="text" th:field="*{cantidad}" class="form-control"
+										id="nombre" name="nombre" placeholder="#" required>
+
+
+								</div>
+
+
+							</div>
+
+							<div class="row">
+
+								<div class="col">
+
+
+									<!-- textarea -->
+									<div class="form-group">
+										<label>Descripcion:</label>
+										<textarea class="form-control" th:field="*{descripcion}"
+											rows="3" id="descripcion" name="descripcion"
+											placeholder="Ingrese la descripcion del producto" required>
+						
+						            </textarea>
+									</div>
+
+
+								</div>
+
+							</div>
+
+
+
+
+							<div class="row">
+								<div class="col">
+
+
+									<label class="control-label" for="img">Imagen:</label>
+									<div class="col-sm-10">
+										<input type="file" class="form-control-file" id="img"
+											name="img">
+									</div>
+
+
+								</div>
+
+
+							</div>
+						</div>
+						<!-- /.card-body -->
+
+						<div class="card-footer">
+
+							<div class="row">
+								<div class="col-sm-2">
+									<button type="submit" class="btn btn-success">
+										<i class="fa-solid fa-floppy-disk fa-2x text-gray-300"></i>&nbsp;Guardar
+									</button>
+								</div>
+							</div>
+						</div>
+
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<th:block layout:fragment="script">
+
+	</th:block>
+</body>
+</html>

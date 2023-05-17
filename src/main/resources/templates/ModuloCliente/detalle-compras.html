@@ -36,7 +36,7 @@
 
 						<div class="col-md">
 
-							<h2 class="text-center fw-bold">LISTADO DE COMPRAS</h2>
+							<h2 class="text-center fw-bold">DETALLE DE COMPRAS</h2>
 
 						</div>
 						<hr>
@@ -55,11 +55,10 @@
 								<thead>
 									<tr>
 
-										<th>Nro. Orden</th>
-										<th>Fecha</th>
-										<th>Valor</th>
-
-										<th>Accion</th>
+										<th>Cantidad</th>
+										<th>Producto</th>
+										<th>Precio</th>
+										<th>Total</th>
 
 									</tr>
 								</thead>
@@ -67,22 +66,14 @@
 
 								<tbody>
 
-									<tr th:each="orden: ${attrOrdenes}">
+									<tr th:each="detalle : ${attrDetalles}">
 
 
 
-										<td th:text="${orden.numero}"></td>
-										<td th:text="${orden.fechaCreacion}"></td>
-										<td th:text="${orden.total}"></td>
-
-
-										<td><p data-placement="top" data-toggle="tooltip"
-												title="Edit">
-												<a class="btn btn-success btn-xs" data-title="Edit"
-													data-toggle="modal" data-target="#edit"
-													th:href="@{/usuario/detalle/{id}(id=${orden.idOrden})}">
-													VER DETALLE </a>
-											</p></td>
+										<td th:text="${detalle.cantidad}"></td>
+										<td th:text="${detalle.nombre}"></td>
+										<td th:text="${detalle.precio}"></td>
+										<td th:text="${detalle.precioTotal}"></td>
 
 									</tr>
 
@@ -100,6 +91,7 @@
 
 
 				</div>
+
 			</section>
 
 		</div>

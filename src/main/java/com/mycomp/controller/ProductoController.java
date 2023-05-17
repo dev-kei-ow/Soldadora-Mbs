@@ -48,7 +48,7 @@ public class ProductoController {
 
 		model.addAttribute("producto", producto);
 
-		return "ModuloProductos/NuevoProducto";
+		return "ModuloProductos/nuevo-producto";
 
 	}
 
@@ -111,7 +111,7 @@ public class ProductoController {
 
 		model.addAttribute("producto", producto);
 
-		return "ModuloProductos/NuevoProducto";
+		return "ModuloProductos/nuevo-producto";
 
 	}
 

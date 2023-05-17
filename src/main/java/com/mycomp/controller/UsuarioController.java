@@ -110,9 +110,9 @@ public class UsuarioController {
 
 		List<Orden> ordenes = ordsrvc.findByidUsuario(usuario);
 
-		model.addAttribute("ordenes", ordenes);
+		model.addAttribute("attrOrdenes", ordenes);
 
-		return "ModuloCliente/Compras";
+		return "ModuloCliente/compras";
 	}
 
 	@GetMapping("/detalle/{id}")
@@ -120,11 +120,11 @@ public class UsuarioController {
 
 		Orden orden = ordsrvc.getFindById(id);
 
-		model.addAttribute("detalles", orden.getDetOrdenList());
+		model.addAttribute("attrDetalles", orden.getDetOrdenList());
 
 		model.addAttribute("sesion", session.getAttribute("idusuario"));
 
-		return "ModuloCliente/DetalleCompras";
+		return "ModuloCliente/detalle-compras";
 	}
 
 	// @RequestMapping(value = "/logout", method = RequestMethod.GET)
