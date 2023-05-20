@@ -46,9 +46,9 @@ public class AdminController {
 	@GetMapping("/ordenes")
 	public String ordenes(Model model) {
 
-		model.addAttribute("ordenes", ordsrvc.findAll());
+		model.addAttribute("AttrOrdenes", ordsrvc.findAll());
 
-		return "ModuloAdmin/Ordenes";
+		return "ModuloAdmin/lista-ordenes";
 	}
 
 	@GetMapping("/detalle/{id}")
@@ -56,7 +56,7 @@ public class AdminController {
 
 		Orden orden = ordsrvc.getFindById(id);
 
-		model.addAttribute("detalleordenes", orden.getDetOrdenList());
+		model.addAttribute("AttrDetalleOrdenes", orden.getDetOrdenList());
 
 		return "ModuloAdmin/DetalleOrdenes";
 	}
