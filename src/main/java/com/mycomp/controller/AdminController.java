@@ -58,7 +58,7 @@ public class AdminController {
 
 		model.addAttribute("AttrDetalleOrdenes", orden.getDetOrdenList());
 
-		return "ModuloAdmin/DetalleOrdenes";
+		return "ModuloAdmin/detalle-ordenes";
 	}
 
 }
