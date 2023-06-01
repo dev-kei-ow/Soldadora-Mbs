@@ -11,9 +11,6 @@
 <body>
 
 
-	<header th:insert="layout-cliente :: header"></header>
-
-
 	<!-- ======= main ======= -->
 	<main>
 
@@ -35,13 +32,14 @@
 			<!-- Section-->
 			<section>
 				<div class="container px-4 px-lg-5 mt-3">
-					<div
-						class="row gx-4 gx-lg-5 my-5 py-4 justify-content-center">
+					<div class="row gx-4 gx-lg-5 my-5 py-4 justify-content-center">
 
 
 
 
-						<div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-2 mt-1" th:each="productos : ${lstProductos}">
+						<div
+							class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-2 mt-1"
+							th:each="productos : ${lstProductos}">
 							<div class="card h-100 border px-4 py-4 mb-5">
 								<!-- Product image-->
 								<img class="card-img-top"
