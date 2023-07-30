@@ -3,68 +3,63 @@
 	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
 	layout:decorate=~{layout-cliente}>
 <head>
-<title>🚖CARRITO-PRODUCTO</title>
+<title>CARRITO-PRODUCTO</title>
 
 </head>
 <body>
 
-	<div th:include="layout-cliente :: header"></div>
+	<!-- ======= main ======= -->
+	<div layout:fragment="main-layout">
+
+		<div class="pagetitle">
+			<h1>Tienda</h1>
+			<nav>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="index.html">Productos</a></li>
+					<li class="breadcrumb-item active">Carrito</li>
+				</ol>
+			</nav>
+
+		</div>
+		<hr>
+
+		<!-- Section-->
+		<section>
+			<div class="col-12">
+				<div class="card card-registration card-registration-2"
+					style="border-radius: 15px;">
+					<div class="card-body p-0">
+						<div class="row g-0">
+							<div class="col-lg-8">
+								<div class="p-5">
+									<div
+										class="d-flex justify-content-between align-items-center mb-5">
+										<h1 class="fw-bold mb-0 text-black">CARRITO</h1>
+										<h6 class="mb-0 text-muted">
+											(<span th:text="${CartCount}">2</span> items)
+										</h6>
+									</div>
+									<hr class="my-4">
 
 
-	<main>
+									<div th:each="dOrden : ${cart}"
+										class="row mb-4 d-flex justify-content-between align-items-center">
 
 
-		<div layout:fragment="main-layout">
-
-			<div class="pagetitle">
-				<h3>Tienda</h3>
-				<nav>
-					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="index.html">Carrito</a></li>
-						<li class="breadcrumb-item active">Productos</li>
-					</ol>
-				</nav>
-
-			</div>
-			<hr>
-
-			<!-- Section-->
-			<section>
-				<div class="col-12">
-					<div class="card card-registration card-registration-2"
-						style="border-radius: 15px;">
-						<div class="card-body p-0">
-							<div class="row g-0">
-								<div class="col-lg-8">
-									<div class="p-5">
-										<div
-											class="d-flex justify-content-between align-items-center mb-5">
-											<h1 class="fw-bold mb-0 text-black">CARRITO</h1>
-											<h6 class="mb-0 text-muted">
-												(<span th:text="${CartCount}">2</span> items)
-											</h6>
+										<div class="col-md-1 col-lg-2 col-xl-2">
+											<img id="itemImagen"
+												th:src="@{/images/{img} (img=${dOrden.idProducto.imagen})}" />
+											<h6 class="mb-0" th:text="${dOrden.nombre}"></h6>
 										</div>
-										<hr class="my-4">
 
+										<div class="col-md-1 col-lg-1 col-xl-3">
+											<h6 class="text-muted" th:text="${dOrden.precio}"></h6>
+										</div>
+										<div class="col-md-1 col-lg-1 col-xl-3">
+											<h6 class="text-muted" th:text="${dOrden.cantidad}"></h6>
+										</div>
 
-										<div th:each="dOrden : ${cart}"
-											class="row mb-4 d-flex justify-content-between align-items-center">
-
-
-											<div class="col-md-1 col-lg-2 col-xl-2">
-												<img id="itemImagen"
-													th:src="@{/images/{img} (img=${dOrden.idProducto.imagen})}" />
-												<h6 class="mb-0" th:text="${dOrden.nombre}"></h6>
-											</div>
-
-											<div class="col-md-1 col-lg-1 col-xl-3">
-												<h6 class="text-muted" th:text="${dOrden.precio}"></h6>
-											</div>
-											<div class="col-md-1 col-lg-1 col-xl-3">
-												<h6 class="text-muted" th:text="${dOrden.cantidad}"></h6>
-											</div>
-
-											<!-- <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+										<!-- <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
 									<button class="btn btn-link px-2"
 										onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
 										<i class="fas fa-minus"></i>
@@ -79,86 +74,73 @@
 										<i class="fas fa-plus"></i>
 									</button>
 								</div> -->
-											<div class="col-md-1 col-lg-1 col-xl-2 offset-lg-1">
-												<h6 class="mb-0" th:text="${'$' + dOrden.precioTotal}"></h6>
-											</div>
-											<div class="col-md-1 col-lg-1 col-xl-1 text-end">
-												<a
-													th:href="@{/cart/removeItem/{id}(id=${dOrden.idProducto.idProducto})}"
-													class="text-muted"><i class="fas fa-times"></i></a>
-											</div>
-
-											<hr class="my-4">
-
+										<div class="col-md-1 col-lg-1 col-xl-2 offset-lg-1">
+											<h6 class="mb-0" th:text="${'$' + dOrden.precioTotal}"></h6>
+										</div>
+										<div class="col-md-1 col-lg-1 col-xl-1 text-end">
+											<a
+												th:href="@{/cart/removeItem/{id}(id=${dOrden.idProducto.idProducto})}"
+												class="text-muted"><i class="fas fa-times"></i></a>
 										</div>
 
-
-
+										<hr class="my-4">
 
 									</div>
+
 								</div>
-								<div class="col-lg-4 bg-grey">
-									<div class="p-5">
-										<h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
-										<hr class="my-4">
+							</div>
+							<div class="col-lg-4 bg-grey">
+								<div class="p-5">
+									<h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+									<hr class="my-4">
 
-										<div class="d-flex justify-content-between mb-4">
-											<h5 class="text-uppercase">items 3</h5>
-											<h5>€ 132.00</h5>
-										</div>
-
-										<h5 class="text-uppercase mb-3">Shipping</h5>
-
-										<div class="mb-4 pb-2">
-											<select class="select">
-												<option value="1">Standard-Delivery- €5.00</option>
-												<option value="2">Two</option>
-												<option value="3">Three</option>
-												<option value="4">Four</option>
-											</select>
-										</div>
-
-										<h5 class="text-uppercase mb-3">Give code</h5>
-
-										<div class="mb-5">
-											<div class="form-outline">
-												<input type="text" id="form3Examplea2"
-													class="form-control form-control-lg" /> <label
-													class="form-label" for="form3Examplea2">Enter your
-													code</label>
-											</div>
-										</div>
-
-										<hr class="my-4">
-
-										<div class="d-flex justify-content-between mb-5">
-											<h5 class="text-uppercase">PRECIO TOTAL</h5>
-											<h5 th:text="${'$' + orden.total}"></h5>
-										</div>
-
-										<a th:href="@{/order}" class="btn btn-dark">Ver Orden</a>
-
+									<div class="d-flex justify-content-between mb-4">
+										<h5 class="text-uppercase">items 3</h5>
+										<h5>€ 132.00</h5>
 									</div>
+
+									<h5 class="text-uppercase mb-3">Shipping</h5>
+
+									<div class="mb-4 pb-2">
+										<select class="select">
+											<option value="1">Standard-Delivery- €5.00</option>
+											<option value="2">Two</option>
+											<option value="3">Three</option>
+											<option value="4">Four</option>
+										</select>
+									</div>
+
+									<h5 class="text-uppercase mb-3">Give code</h5>
+
+									<div class="mb-5">
+										<div class="form-outline">
+											<input type="text" id="form3Examplea2"
+												class="form-control form-control-lg" /> <label
+												class="form-label" for="form3Examplea2">Enter your
+												code</label>
+										</div>
+									</div>
+
+									<hr class="my-4">
+
+									<div class="d-flex justify-content-between mb-5">
+										<h5 class="text-uppercase">PRECIO TOTAL</h5>
+										<h5 th:text="${'$' + orden.total}"></h5>
+									</div>
+
+									<a th:href="@{/order}" class="btn btn-dark">Ver Orden</a>
+
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+			</div>
 
-			</section>
+		</section>
 
-		</div>
-
-
-	</main>
-
-
-	<!-- Footer -->
-	<div th:include="layout-cliente :: footer"></div>
-	<a href="#"
-		class="back-to-top d-flex align-items-center justify-content-center"><i
-		class="bi bi-arrow-up-short"></i></a>
-
+	</div>
+	<!-- //======= main ======= -->
 
 </body>
 </html>

@@ -10,88 +10,70 @@
 
 <body>
 
-
 	<!-- ======= main ======= -->
-	<main>
+	<div layout:fragment="main-layout">
 
+		<div class="pagetitle">
+			<h1>Tienda</h1>
+			<nav>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+					<li class="breadcrumb-item active">Productos</li>
+				</ol>
+			</nav>
 
-		<div layout:fragment="main-layout">
+		</div>
+		<hr>
 
-			<div class="pagetitle">
-				<h3>Tienda</h3>
-				<nav>
-					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="index.html">home</a></li>
-						<li class="breadcrumb-item active">Productos</li>
-					</ol>
-				</nav>
+		<!-- Section-->
+		<section>
+			<div class="container px-4 px-lg-5 mt-3">
+				<div class="row gx-4 gx-lg-5 my-5 py-4 justify-content-center">
 
-			</div>
-			<hr>
-
-			<!-- Section-->
-			<section>
-				<div class="container px-4 px-lg-5 mt-3">
-					<div class="row gx-4 gx-lg-5 my-5 py-4 justify-content-center">
-
-
-
-
-						<div
-							class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-2 mt-1"
-							th:each="productos : ${lstProductos}">
-							<div class="card h-100 border px-4 py-4 mb-5">
-								<!-- Product image-->
-								<img class="card-img-top"
-									th:src="@{/images/{img} (img=${productos.imagen})} "
-									height="150" width="100" alt="..." />
-								<!-- Product details-->
-								<div class="card-body p-4">
-									<div class="text-center">
-										<!-- Product name-->
-										<h5 class="fw-bolder" th:text="${productos.nombre}">Popular
-											Item</h5>
-										<!-- Product reviews-->
-										<div
-											class="d-flex justify-content-center small text-warning mb-2">
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-										</div>
-										<!-- Product price-->
-										<span th:text="${'$' + productos.precio}"></span>
+					<div
+						class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-2 mt-1"
+						th:each="productos : ${lstProductos}">
+						<div class="card h-100 border px-4 py-4 mb-5">
+							<!-- Product image-->
+							<img class="card-img-top"
+								th:src="@{/images/{img} (img=${productos.imagen})} "
+								height="150" width="100" alt="..." />
+							<!-- Product details-->
+							<div class="card-body p-4">
+								<div class="text-center">
+									<!-- Product name-->
+									<h5 class="fw-bolder" th:text="${productos.nombre}">Popular
+										Item</h5>
+									<!-- Product reviews-->
+									<div
+										class="d-flex justify-content-center small text-warning mb-2">
+										<div class="bi-star-fill"></div>
+										<div class="bi-star-fill"></div>
+										<div class="bi-star-fill"></div>
+										<div class="bi-star-fill"></div>
+										<div class="bi-star-fill"></div>
 									</div>
+									<!-- Product price-->
+									<span th:text="${'$' + productos.precio}"></span>
 								</div>
-								<!-- Product actions-->
-								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-									<div class="text-center">
-										<a class="btn btn-outline-dark mt-auto"
-											th:href="@{/productodetalle/{id} (id = ${productos.idProducto})}">
-											<i class="fa-solid fa-eye"></i> Ver detalle
-										</a>
-									</div>
+							</div>
+							<!-- Product actions-->
+							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+								<div class="text-center">
+									<a class="btn btn-outline-dark mt-auto"
+										th:href="@{/productodetalle/{id} (id = ${productos.idProducto})}">
+										<i class="fa-solid fa-eye"></i> Ver detalle
+									</a>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</section>
+			</div>
+		</section>
 
-		</div>
-
-
-	</main>
-
-	<!-- Footer -->
-	<div th:insert="layout-cliente :: footer"></div>
-
-	<a href="#"
-		class="back-to-top d-flex align-items-center justify-content-center"><i
-		class="bi bi-arrow-up-short"></i></a>
-
-
+	</div>
+	<!-- //======= main ======= -->
 
 
 </body>

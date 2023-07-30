@@ -1,39 +1,53 @@
-
 <div class="d-flex align-items-center justify-content-between">
-	<a href="index.html" class="logo d-flex align-items-center"> <img
-		th:src="@{/././assets/img/sold.png}" alt=""> <span
-		class="d-none d-lg-block">NiceAdmin</span>
-	</a>
+	<a th:href="@{/indexProducto}" class="logo d-flex align-items-center">
+		<img th:src="@{/././assets/img/sold.png}" alt=""> <span
+		class="d-none d-lg-block">&nbsp;MBS CORP.</span>
+	</a> <i class="bi bi-list toggle-sidebar-btn"></i>
 </div>
 <!-- End LOGO -->
 
-<nav class="navbar navbar-expand-lg sticky-top">
+<nav class="navbar navbar-expand-lg sticky-top mx-auto">
 	<div class="container-fluid">
 
-		<div class=" collapse navbar-collapse" id="navbarNavDropdown">
-
-			<ul class="navbar-nav ms-auto">
-				<li class="nav-item"><a
-					class="nav-link mx-2 text-uppercase active" aria-current="page"
-					href="#">Offers</a></li>
-				<li class="nav-item"><a class="nav-link mx-2 text-uppercase"
-					th:href="@{/homeproducto}">Productos</a></li>
-				<li class="nav-item"><a class="nav-link mx-2 text-uppercase"
-					href="#">Catalog</a></li>
-				<li class="nav-item"><a class="nav-link mx-2 text-uppercase"
-					href="#">Services</a></li>
-				<li class="nav-item"><a class="nav-link mx-2 text-uppercase"
-					href="#">About</a></li>
-
-			</ul>
+		<div class="row">
+			<div class="col-12">
+				<div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
+					<ul class="navbar-nav ms-auto">
+						<li class="nav-item">
+						 <a class="nav-link mx-2 text-uppercase text-white active" aria-current="page" href="#">
+						     Offers
+						 </a>
+						</li>
+						<li class="nav-item">
+						  <a class="nav-link mx-2 text-uppercase text-white" th:href="@{/homeproducto}">
+						      Productos
+						  </a>
+						</li>
+						<li class="nav-item">
+						  <a class="nav-link mx-2 text-uppercase text-white" href="#">
+						      Catalogo
+						  </a>
+						</li>
+						<li class="nav-item">
+						  <a class="nav-link mx-2 text-uppercase text-white" href="#">
+						      Servicios
+						  </a>
+						</li>
+						<li class="nav-item">
+						   <a class="nav-link mx-2 text-uppercase text-white" href="#">
+						      Nosotros
+						   </a>
+						</li>
+					</ul>
+				</div>
+			</div>
 
 		</div>
+
 	</div>
 </nav>
 
-
 <nav class="header-nav ms-auto">
-
 
 	<ul class="d-flex align-items-center">
 
@@ -42,10 +56,6 @@
 				class="bi bi-search"></i>
 		</a></li>
 		<!-- End Search Icon-->
-
-		<li class="cart-icon  mr25 "><span class="icon-badge bg-primary"
-			th:text="${CartCount}">0</span><a class="link-cart"
-			th:href="@{cartGet}"> <i class="fa-solid fa-cart-arrow-down"></i></a></li>
 
 		<!-- End Notification NAV -->
 
@@ -113,52 +123,53 @@
 			data-bs-toggle="dropdown"> <img
 				src="././assets/img/profile-img.jpg" alt="Profile"
 				class="rounded-circle"> <span
-				class="d-none d-md-block dropdown-toggle ps-2">CUENTA</span>
+				class="d-none d-md-block dropdown-toggle ps-2">OPCIONES</span>
 		</a> <!-- End Profile IMAGE Icon -->
 
-			<ul
-				class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-
-				<li></li>
-
-				<li class="dropdown-header">
-					<h6 class="dropdown-item" th:text="${session.nombreusuario + ':'}"></h6>
-					<span>usuario</span>
+			<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+               
+				<li>
+				  <a class="dropdown-item d-flex align-items-center" href="users-profile.html" th:href="@{/usuario/compras}">
+				     <i class="bi bi-person"></i> 
+				       <span>Compras</span>
+				  </a>
 				</li>
+				
 				<li>
 					<hr class="dropdown-divider">
 				</li>
 
-				<li><a class="dropdown-item d-flex align-items-center"
-					href="users-profile.html" th:href="@{/usuario/compras}"> <i
-						class="bi bi-person"></i> <span>Compras</span>
-				</a></li>
+				<li>
+				  <a class="dropdown-item d-flex align-items-center" href="users-profile.html" th:href="@{/usuario/login}">
+				     <i class="bi bi-gear"></i>
+				       <span>Iniciar Sesion</span>
+				  </a>
+				</li>
+				
 				<li>
 					<hr class="dropdown-divider">
 				</li>
 
-				<li><a class="dropdown-item d-flex align-items-center"
-					href="users-profile.html" th:href="@{/usuario/login}"> <i
-						class="bi bi-gear"></i> <span>Iniciar Sesion</span>
-				</a></li>
+				<li>
+				  <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+				     <i class="bi bi-question-circle"></i> 
+				       <span>¿Necesita Ayuda?</span>
+				  </a>
+				</li>
+				
 				<li>
 					<hr class="dropdown-divider">
 				</li>
 
-				<li><a class="dropdown-item d-flex align-items-center"
-					href="pages-faq.html"> <i class="bi bi-question-circle"></i> <span>Need
-							Help?</span>
-				</a></li>
 				<li>
-					<hr class="dropdown-divider">
+				  <a class="dropdown-item d-flex align-items-center" th:href="@{/usuario/logout}">
+				    <i class="bi bi-box-arrow-right"></i>
+				      <span>Cerrar Sesión</span>
+				  </a>
 				</li>
 
-				<li><a class="dropdown-item d-flex align-items-center"
-					th:href="@{/usuario/logout}"> <i class="bi bi-box-arrow-right"></i>
-						<span>Sign Out</span>
-				</a></li>
-
-			</ul> <!-- End Profile DROPDOWN Items --></li>
+			</ul> <!-- End Profile DROPDOWN Items -->
+	    </li>
 		<!-- End Profile NAV -->
 
 	</ul>

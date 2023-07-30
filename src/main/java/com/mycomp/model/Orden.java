@@ -7,7 +7,7 @@ import java.util.*;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "ordenes")
+@Table(name = "orden")
 public class Orden implements Serializable {
 
 	private static final long serialVersionUID = 1L;

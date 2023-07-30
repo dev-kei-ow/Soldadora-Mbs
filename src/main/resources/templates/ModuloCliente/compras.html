@@ -8,112 +8,101 @@
 </head>
 <body>
 
-	<div th:include="layout-cliente :: header"></div>
+	<!-- ======= main ======= -->
+	<div layout:fragment="main-layout">
 
+		<div class="pagetitle">
+			<h1>Tienda</h1>
+			<nav>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="index.html">orden</a></li>
+					<li class="breadcrumb-item active">compras</li>
+				</ol>
+			</nav>
 
-	<main>
+		</div>
+		<hr>
 
+		<!-- Section-->
+		<section>
+			<div class="container">
 
-		<div layout:fragment="main-layout">
+				<div class="row my-3">
 
-			<div class="pagetitle">
-				<h3>Tienda</h3>
-				<nav>
-					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="index.html">Compras</a></li>
-						<li class="breadcrumb-item active">Productos</li>
-					</ol>
-				</nav>
+					<div class="col-md">
 
-			</div>
-			<hr>
-
-			<!-- Section-->
-			<section>
-				<div class="container">
-
-					<div class="row my-3">
-
-						<div class="col-md">
-
-							<h2 class="text-center fw-bold">LISTADO DE COMPRAS</h2>
-
-						</div>
-						<hr>
+						<h1 class="text-center fw-bold">LISTADO DE COMPRAS</h1>
 
 					</div>
+					<hr>
+
+				</div>
 
 
-					<div class="row my-5">
+				<div class="row my-5">
 
 
-						<div class="col-md-12">
+					<div class="col-md-12">
 
-							<table id="datatable" class="table table-striped table-bordered"
-								style="width: 100%">
+						<table id="datatable" class="table table-striped table-bordered"
+							style="width: 100%">
 
-								<thead>
-									<tr>
+							<thead>
+								<tr>
 
-										<th>Nro. Orden</th>
-										<th>Fecha</th>
-										<th>Valor</th>
+									<th>Nro. Orden</th>
+									<th>Fecha</th>
+									<th>Valor</th>
 
-										<th>Accion</th>
+									<th>Accion</th>
 
-									</tr>
-								</thead>
-
-
-								<tbody>
-
-									<tr th:each="orden: ${attrOrdenes}">
+								</tr>
+							</thead>
 
 
+							<tbody>
 
-										<td th:text="${orden.numero}"></td>
-										<td th:text="${orden.fechaCreacion}"></td>
-										<td th:text="${orden.total}"></td>
-
-
-										<td><p data-placement="top" data-toggle="tooltip"
-												title="Edit">
-												<a class="btn btn-success btn-xs" data-title="Edit"
-													data-toggle="modal" data-target="#edit"
-													th:href="@{/usuario/detalle/{id}(id=${orden.idOrden})}">
-													VER DETALLE </a>
-											</p></td>
-
-									</tr>
+								<tr th:each="orden: ${attrOrdenes}">
 
 
-								</tbody>
+
+									<td th:text="${orden.numero}"></td>
+									<td th:text="${orden.fechaCreacion}"></td>
+									<td th:text="${orden.total}"></td>
 
 
-							</table>
+									<td><p data-placement="top" data-toggle="tooltip"
+											title="Edit">
+											<a class="btn btn-success btn-xs" data-title="Edit"
+												data-toggle="modal" data-target="#edit"
+												th:href="@{/usuario/detalle/{id}(id=${orden.idOrden})}">
+												VER DETALLE </a>
+										</p></td>
+
+								</tr>
 
 
-						</div>
+							</tbody>
+
+
+						</table>
 
 
 					</div>
 
 
 				</div>
-			</section>
-
-		</div>
 
 
-	</main>
+			</div>
+		</section>
+
+	</div>
+	<!-- ======= main ======= -->
 
 
-	<!-- Footer -->
-	<div th:include="layout-cliente :: footer"></div>
-	<a href="#"
-		class="back-to-top d-flex align-items-center justify-content-center"><i
-		class="bi bi-arrow-up-short"></i></a>
-
+	<!-- Footer 
+	<div th:include="layout-cliente :: footer"></div>-->
 
 </body>
 </html>

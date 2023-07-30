@@ -42,7 +42,7 @@ public class UsuarioController {
 	@GetMapping("/login")
 	public String loginCliente() {
 
-		return "ModuloCliente/Login";
+		return "ModuloCliente/login";
 
 	}
 
@@ -83,7 +83,7 @@ public class UsuarioController {
 	@GetMapping("/registro")
 	public String registrarCliente() {
 
-		return "ModuloCliente/RegistrarCliente";
+		return "ModuloCliente/registrar-cliente";
 
 	}
 
