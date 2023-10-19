@@ -56,15 +56,16 @@ public class HomeController {
 	@GetMapping("productodetalle/{id}")
 	public String productoDetalle(@PathVariable Integer id, Model model) {
 
-		Producto detproducto = prodsrvc.getFindById(id);
+		Producto detProducto = prodsrvc.getFindById(id);
 
-		model.addAttribute("detproducto", detproducto);
+		model.addAttribute("detproducto", detProducto);
 		model.addAttribute("CartCount", GlobalData.detOrden.size());
 
 		return "ModuloCliente/producto-detalle";
 
 	}
 
+	/* averiguar si es necesario pasar la cantidad como parametro */
 	@PostMapping("addToCart")
 	public String agregarCarrito(@RequestParam Integer id, @RequestParam int cantidad, Model model) {
 
@@ -72,6 +73,7 @@ public class HomeController {
 
 		DetalleOrden cart = new DetalleOrden();
 		Producto producto = prodsrvc.getFindById(id);
+
 		double sumaTotal = 0;
 
 		cart.setCantidad(cantidad);
@@ -80,7 +82,7 @@ public class HomeController {
 		cart.setPrecioTotal(producto.getPrecio() * cantidad);
 		cart.setIdProducto(producto);
 
-		/*::VALIDAR QUE EL PRODUCTO NO SE AÑADA DOS VECES::*/
+		/* ::VALIDAR QUE EL PRODUCTO NO SE AÑADA DOS VECES:: */
 		Integer idProd = producto.getIdProducto(); // AQUI VIENE EL ID 1
 
 		/*
@@ -169,7 +171,7 @@ public class HomeController {
 	/* GUARDAR LA ORDEN */
 	@GetMapping("saveOrder")
 	public String saveOrder(HttpSession session) {
-		
+
 		Date fechaCreacion = new Date();
 
 		orden.setFechaCreacion(fechaCreacion);

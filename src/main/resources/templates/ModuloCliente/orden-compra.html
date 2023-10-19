@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
 	layout:decorate=~{layout-cliente}>
+
 <head>
-<title>ORDEN-COMPRAS</title>
+	<title>ORDEN-COMPRAS</title>
 
 </head>
+
 <body>
 
 	<!-- ======= main ======= -->
@@ -26,56 +27,145 @@
 		<!-- Section-->
 		<section>
 
-			<!-- Blog Post -->
-			<div class="card mb-4">
-				<div class="card-body">
-					<div class="row">
-						<div class="col-lg-9">
-							<div class="card-body">
-								<h5 class="card-title">DATOS CLIENTE :</h5>
+			<div class="col-12 custom-shadow">
+				<div class="card card-registration card-registration-2" style="border-radius: 15px;">
+					<div class="card-body p-0">
+						<div class="row g-0">
+							<div class="col-lg-6 custom-border-right custom-shadow">
+								<div class="card-body">
 
-								<hr>
-								<h6 th:text=" '*Empresa : '+ ${usuario.empresa}"></h6>
-								<h6 th:text=" '*Nombre : '+ ${usuario.nombre}"></h6>
-								<h6 th:text="'*Correo : '+  ${usuario.correo}"></h6>
-								<h6 th:text="'*Dirección : '+ ${usuario.direccion}"></h6>
+									<h5 class="card-title">Cliente Detalles</h5>
 
-								<hr>
+									<div class="row">
+										<div class="col-lg-3 col-md-4 label">Empresa:</div>
+										<div class="col-lg-9 col-md-8" th:text="${usuario.empresa}"></div>
+									</div>
 
-								<h5 class="card-title">PRODUCTOS :</h5>
-								<div class="alert alert-light" role="alert">
-									<table class="table">
-										<thead>
-											<tr>
-												<th scope="col">Producto</th>
-												<th scope="col">Precio</th>
-												<th scope="col">Cantidad</th>
-												<th scope="col">Total</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr th:each="dtorden: ${cart}">
-												<td th:text="${dtorden.nombre}"></td>
-												<td th:text="${dtorden.precio}"></td>
-												<td th:text="${dtorden.cantidad}"></td>
-												<td th:text="${dtorden.precioTotal}"></td>
+									<div class="row">
+										<div class="col-lg-3 col-md-4 label">Nombre:</div>
+										<div class="col-lg-9 col-md-8" th:text="${usuario.nombre}"></div>
+									</div>
 
-											</tr>
-										</tbody>
-									</table>
+									<div class="row">
+										<div class="col-lg-3 col-md-4 label">Correo:</div>
+										<div class="col-lg-9 col-md-8" th:text="${usuario.correo}"></div>
+									</div>
+
+									<div class="row">
+										<div class="col-lg-3 col-md-4 label">Dirección:</div>
+										<div class="col-lg-9 col-md-8" th:text="${usuario.direccion}"></div>
+									</div>
+
+									<hr>
+
+									<div class="card top-selling overflow-auto">
+
+										<div class="card-body pb-1">
+											<h5 class="card-title">Listado <span>| Productos</span></h5>
+
+											<table class="table table-borderless">
+												<thead>
+													<tr>
+
+														<th scope="col">Producto</th>
+														<th scope="col">Precio</th>
+														<th scope="col">Cantidad</th>
+														<th scope="col">SubTotal</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr th:each="dtorden: ${cart}">
+														<td class="text-primary fw-bold" th:text="${dtorden.nombre}"></td>
+														<td th:text="${dtorden.precio}"></td>
+														<td class="fw-bold" th:text="${dtorden.cantidad}"></td>
+														<td th:text="${dtorden.precioTotal}"></td>
+													</tr>
+												</tbody>
+
+											</table>
+
+
+											<ul class="list-group">
+												<li class="pt-2 pb-1 list-group-item flex align-items">
+													<h5 class="text-end" th:text="'Total: ' + ${orden.total}"></h5>
+												</li>
+											</ul>
+
+
+										</div>
+
+									</div>
+									<div class="mt-0 mb-2">
+										<a th:href="@{/saveOrder}" class="w-100 mt-6 btn btn-dark btn-lg">Generar Orden</a>
+									</div>
 								</div>
 
 							</div>
-						</div>
 
 
-						<div class="col-lg-3">
+							<div class="col-lg-6 p-5">
 
-							<ul class="list-group">
-								<li class="list-group-item"><h5
-										th:text=" 'Total: '+ ${orden.total} "></h5></li>
-								<a th:href="@{/saveOrder}" class="btn btn-dark">Generar</a>
-							</ul>
+								<div class="card-body">
+									<form class="needs-validation" novalidate>
+
+										<h5 class="card-title">Pago</h5>
+										<div class="my-3">
+											<div class="form-check">
+												<input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
+												<label class="form-check-label" for="credit">Tarjeta Credito</label>
+											</div>
+											<div class="form-check">
+												<input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
+												<label class="form-check-label" for="debit">Tarjeta Debito</label>
+											</div>
+											<div class="form-check">
+												<input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
+												<label class="form-check-label" for="paypal">PayPal</label>
+											</div>
+										</div>
+
+										<div class="row gy-3">
+											<div class="col-md-6">
+												<label for="cc-name" class="form-label">Titular</label>
+												<input type="text" class="form-control" id="cc-name" placeholder="" required>
+												<small class="text-muted">Nombre completo que se muestra en la tarjeta</small>
+												<div class="invalid-feedback">
+													Name on card is required
+												</div>
+											</div>
+
+											<div class="col-md-6">
+												<label for="cc-number" class="form-label">Número de tarjeta</label>
+												<input type="text" class="form-control" id="cc-number" placeholder="" required>
+												<div class="invalid-feedback">
+													Credit card number is required
+												</div>
+											</div>
+
+											<div class="col-md-3">
+												<label for="cc-expiration" class="form-label">Expiración</label>
+												<input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+												<div class="invalid-feedback">
+													Expiration date required
+												</div>
+											</div>
+
+											<div class="col-md-3">
+												<label for="cc-cvv" class="form-label">CVV</label>
+												<input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+												<div class="invalid-feedback">
+													Security code required
+												</div>
+											</div>
+										</div>
+
+										<hr class="my-4">
+
+										<button class="w-100 btn btn-dark btn-lg" type="submit">Continue a checkout</button>
+									</form>
+								</div>
+
+							</div>
 						</div>
 					</div>
 				</div>
@@ -87,4 +177,5 @@
 	<!-- //======= main ======= -->
 
 </body>
+
 </html>
