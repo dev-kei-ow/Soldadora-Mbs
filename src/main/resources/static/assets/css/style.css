@@ -1683,3 +1683,7 @@ input[type="number"] {
 	appearance: none;
 	margin: 0;
 }
+
+.left-body-td {
+	text-align: left !important;
+}

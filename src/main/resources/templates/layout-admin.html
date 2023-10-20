@@ -80,7 +80,7 @@
 	</main>
 
 	<!-- ======= Footer ======= -->
-	<footer id="footer" class="footer">
+	<footer id="footer" class="footer mb-0">
 
 		<div th:replace="/FragmentsAdmin/footer"></div>
 
@@ -112,12 +112,6 @@
 	<!-- Template Main JS File -->
 	<script th:src="@{/././assets/js/main.js}"></script>
 
-
-	<script>
-		$(document).ready(function() {
-			$('#datatable').DataTable();
-		});
-	</script>
 
 	<th:block layout:fragment="script">
 
