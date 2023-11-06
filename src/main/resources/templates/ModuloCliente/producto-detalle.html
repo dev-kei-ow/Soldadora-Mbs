@@ -42,7 +42,7 @@
 									</div>
 
 
-									<div class="tab-pane" id="pic-2">
+									<!--<div class="tab-pane" id="pic-2">
 										<img src="http://placekitten.com/400/252" />
 									</div>
 									<div class="tab-pane" id="pic-3">
@@ -53,15 +53,15 @@
 									</div>
 									<div class="tab-pane" id="pic-5">
 										<img src="http://placekitten.com/400/252" />
-									</div>
+									</div>-->
 								</div>
 								<ul class="preview-thumbnail nav nav-tabs">
-									<li class="active"><a data-target="#pic-1" data-toggle="tab"><img
-												src="http://placekitten.com/200/126" /></a></li>
-									<li><a data-target="#pic-2" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-									<li><a data-target="#pic-3" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-									<li><a data-target="#pic-4" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-									<li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+									<li th:each="caracteristica, iterStat : ${detproducto.lstCaracteristicas}"
+										th:class="${iterStat.index == 0} ? 'active' : ''">
+										<a th:data-target="'#pic-' + ${iterStat.count}" data-toggle="tab">
+											<img th:src="@{/images/{img} (img=${caracteristica.url})}" />
+										</a>
+									</li>
 								</ul>
 
 							</div>
@@ -112,7 +112,8 @@
 										<span class="size" data-toggle="tooltip" title="xtra large">xl</span>
 									</h6>
 									<h6 class="colors">
-										colors: <span class="color orange not-available" data-toggle="tooltip" title="Not In store"></span>
+										colors: <span class="color orange not-available" data-toggle="tooltip"
+											title="Not In store"></span>
 										<span class="color green"></span> <span class="color blue"></span>
 									</h6>
 									<div class="action">

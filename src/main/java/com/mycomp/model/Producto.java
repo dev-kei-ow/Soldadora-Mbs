@@ -1,6 +1,8 @@
 package com.mycomp.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -24,6 +26,12 @@ public class Producto implements Serializable {
 	@JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	private Usuario idUsuario;
+
+	// La opción 'orphanRemoval = true' garantiza que las imágenes relacionadas se
+	// eliminarán automáticamente
+	// de la base de datos si se eliminan o desasignan del producto principal.
+	@OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<CaracteristicaProducto> lstCaracteristicas = new ArrayList<>();
 
 	public Producto() {
 
@@ -95,6 +103,14 @@ public class Producto implements Serializable {
 
 	public void setIdUsuario(Usuario idUsuario) {
 		this.idUsuario = idUsuario;
+	}
+
+	public List<CaracteristicaProducto> getLstCaracteristicas() {
+		return lstCaracteristicas;
+	}
+
+	public void setLstCaracteristicas(List<CaracteristicaProducto> lstCaracteristicas) {
+		this.lstCaracteristicas = lstCaracteristicas;
 	}
 
 }
